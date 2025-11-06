@@ -110,11 +110,11 @@ export default function CartPage() {
               <div className="space-y-2 py-4 border-y border-gray-200">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
-                  <span className="font-semibold">{getTotalPrice().toFixed(5)} XLM</span>
+                  <span className="font-semibold">{getTotalPrice().toFixed(5)} ETH</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Transaction Fee</span>
-                  <span className="font-semibold">{transactionFee.toFixed(5)} XLM</span>
+                  <span className="font-semibold">{transactionFee.toFixed(5)} ETH</span>
                 </div>
               </div>
 
@@ -122,7 +122,7 @@ export default function CartPage() {
                 <span className="text-lg font-bold">Total</span>
                 <div className="text-right">
                   <p className="text-2xl font-bold text-primary">{total.toFixed(5)}</p>
-                  <p className="text-sm text-gray-600">XLM</p>
+                  <p className="text-sm text-gray-600">ETH</p>
                 </div>
               </div>
 

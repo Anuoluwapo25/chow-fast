@@ -45,7 +45,7 @@ export default function OrderConfirm() {
                       </div>
                     </div>
                     <p className="font-semibold">
-                      {(item.product.price * item.quantity).toFixed(2)} XLM
+                      {(item.product.price * item.quantity).toFixed(2)} ETH
                     </p>
                   </div>
                 ))}
@@ -57,7 +57,7 @@ export default function OrderConfirm() {
               <div className="flex justify-between items-center">
                 <span className="text-lg font-bold">Total Paid</span>
                 <span className="text-2xl font-bold text-primary">
-                  {getTotalPrice().toFixed(5)} XLM
+                  {getTotalPrice().toFixed(5)} ETH
                 </span>
               </div>
             </div>

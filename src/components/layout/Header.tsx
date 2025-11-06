@@ -15,7 +15,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-primary">Fast Snacks</span>
+            <span className="text-2xl font-bold text-primary">Chow Fast</span>
             <span className="text-2xl font-bold text-gray-900">On Chain</span>
           </Link>
 

@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <CardTitle className="text-xl">{product.name}</CardTitle>
         <div className="flex items-baseline gap-2">
           <span className="text-2xl font-bold text-primary">{product.price}</span>
-          <span className="text-sm text-gray-600">XLM</span>
+          <span className="text-sm text-gray-600">ETH</span>
         </div>
         <CardDescription>{product.description}</CardDescription>
       </CardHeader>

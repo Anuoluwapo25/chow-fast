@@ -57,7 +57,7 @@ export default function Cart() {
             {/* Subtotal */}
             <div className="text-right">
               <p className="font-semibold text-primary">
-                {item.product.price * item.quantity} XLM
+                {item.product.price * item.quantity} ETH
               </p>
             </div>
 

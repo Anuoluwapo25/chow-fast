@@ -92,7 +92,7 @@ export default function Home() {
               <Check className="h-12 w-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">Pay & Confirm</h3>
               <p className="text-gray-600">
-                Pay with XLM and get instant confirmation
+                Pay with ETH and get instant confirmation
               </p>
             </div>
           </div>
@@ -214,7 +214,7 @@ export default function Home() {
             <div className="text-center">
               <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">Blockchain Secure</h3>
-              <p className="text-gray-600">All transactions secured on Stellar blockchain</p>
+              <p className="text-gray-600">All transactions secured on Arbitrium blockchain</p>
             </div>
 
             <div className="text-center">
@@ -254,7 +254,7 @@ export default function Home() {
               <AccordionItem value="item-2">
                 <AccordionTrigger>What payment methods do you accept?</AccordionTrigger>
                 <AccordionContent>
-                  We accept payments in XLM (Stellar Lumens) through your Stellar-compatible wallet like Freighter or xBull.
+                  We accept payments in ETH through your Arbitrium-compatible wallet like Metamask.
                 </AccordionContent>
               </AccordionItem>
 
@@ -268,7 +268,7 @@ export default function Home() {
               <AccordionItem value="item-4">
                 <AccordionTrigger>Are the prices in XLM or Naira?</AccordionTrigger>
                 <AccordionContent>
-                  All prices are displayed in XLM (Stellar Lumens). The XLM amount is equivalent to the Naira value at current exchange rates.
+                  All prices are displayed in ETH. The ETH amount is equivalent to the Naira value at current exchange rates.
                 </AccordionContent>
               </AccordionItem>
 

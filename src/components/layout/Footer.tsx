@@ -11,10 +11,10 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl font-bold text-primary">Fast Snacks</span>
+              <span className="text-2xl font-bold text-primary">Chow Fast</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Order snacks, pay with crypto, delivered fast on the Stellar blockchain.
+              Order snacks, pay with crypto, delivered fast on the Arbitrum blockchain.
             </p>
           </div>
 
@@ -138,7 +138,7 @@ export default function Footer() {
 
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Fast Snacks On Chain. All rights reserved.
+              &copy; {currentYear} Chow Fast On Chain. All rights reserved.
             </p>
           </div>
         </div>

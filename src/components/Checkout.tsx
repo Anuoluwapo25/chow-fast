@@ -28,7 +28,7 @@ export default function Checkout({ onConfirm }: CheckoutProps) {
                 <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
               </div>
               <p className="font-semibold text-primary">
-                {(item.product.price * item.quantity).toFixed(2)} XLM
+                {(item.product.price * item.quantity).toFixed(2)} ETH
               </p>
             </div>
           ))}
@@ -36,17 +36,17 @@ export default function Checkout({ onConfirm }: CheckoutProps) {
           <div className="border-t pt-4 space-y-2">
             <div className="flex justify-between">
               <span className="text-gray-600">Subtotal</span>
-              <span className="font-semibold">{getTotalPrice().toFixed(5)} XLM</span>
+              <span className="font-semibold">{getTotalPrice().toFixed(5)} ETH</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Transaction Fee</span>
-              <span className="font-semibold">{transactionFee.toFixed(5)} XLM</span>
+              <span className="font-semibold">{transactionFee.toFixed(5)} ETH</span>
             </div>
           </div>
 
           <div className="border-t pt-4 flex justify-between items-center">
             <span className="text-xl font-bold">Total</span>
-            <span className="text-2xl font-bold text-primary">{total.toFixed(5)} XLM</span>
+            <span className="text-2xl font-bold text-primary">{total.toFixed(5)} ETH</span>
           </div>
         </CardContent>
       </Card>
@@ -63,7 +63,7 @@ export default function Checkout({ onConfirm }: CheckoutProps) {
               <p className="font-semibold">Stellar Wallet</p>
             </div>
             <p className="text-sm text-gray-600 mb-4">
-              Connect your Stellar wallet to complete the payment. Supported wallets: Freighter, xBull, Albedo.
+              Connect your wallet to complete the payment. Supported wallets: Meatmask.
             </p>
             <Button variant="outline" className="w-full">
               Connect Wallet

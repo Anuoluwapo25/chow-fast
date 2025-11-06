@@ -93,16 +93,16 @@ export const CATEGORIES = {
   budget: {
     title: 'Budget-Friendly Packages',
     description: 'For students and quick, affordable snacks',
-    priceRange: '100-300 XLM',
+    priceRange: '1-2 ETH',
   },
   middle: {
     title: 'Middle-Class Packages',
     description: 'Better quality snacks and drinks',
-    priceRange: '400-800 XLM',
+    priceRange: '400-800 ETH',
   },
   bulk: {
     title: 'Bulk/Event Packages',
     description: 'For parties, meetings, and events',
-    priceRange: '5,000+ XLM',
+    priceRange: '5,000+ ETH',
   },
 };
