@@ -138,10 +138,12 @@ export default function Checkout({ onConfirm }: CheckoutProps) {
           <div className="p-4 bg-accent rounded-lg">
             <div className="flex items-center gap-3 mb-3">
               <CreditCard className="h-6 w-6 text-primary" />
-              <p className="font-semibold">Arbitrum Wallet</p>
+              
+              <p className="font-semibold"> Wallet</p>
             </div>
             <p className="text-sm text-gray-600 mb-4">
-              Connect your Arbitrum wallet to complete the payment. Powered by Stylus smart contracts.
+              Connect your wallet to complete the payment. Supported wallets: Metamask.
+
             </p>
 
             {isConnected ? (

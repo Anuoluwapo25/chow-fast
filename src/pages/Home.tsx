@@ -27,7 +27,7 @@ export default function Home() {
                 <span className="text-gray-900">On Chain</span>
               </h1>
               <p className="text-xl text-gray-600">
-                Order snacks, pay with crypto, delivered fast. Experience the future of food ordering on the Stellar blockchain.
+                Order snacks, pay with crypto, delivered fast. Experience the future of food ordering on the Arbitrium blockchain.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/category/budget">
@@ -247,7 +247,7 @@ export default function Home() {
               <AccordionItem value="item-1">
                 <AccordionTrigger>How do I place an order?</AccordionTrigger>
                 <AccordionContent>
-                  Browse our packages, add items to your cart, connect your Stellar wallet, and confirm your payment. It's that simple!
+                  Browse our packages, add items to your cart, connect your ETH wallet, and confirm your payment. It's that simple!
                 </AccordionContent>
               </AccordionItem>
 

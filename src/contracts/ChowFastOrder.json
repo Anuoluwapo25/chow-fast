@@ -9,7 +9,7 @@
     },
     {
       "type": "function",
-      "name": "create_order",
+      "name": "createOrder",
       "inputs": [
         {
           "name": "item_product_ids",
@@ -53,7 +53,7 @@
     },
     {
       "type": "function",
-      "name": "update_order_status",
+      "name": "updateOrderStatus",
       "inputs": [
         {
           "name": "order_id",
