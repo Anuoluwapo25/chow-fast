@@ -16,7 +16,7 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <span className="text-2xl font-bold text-primary">Chow Fast</span>
-            <span className="text-2xl font-bold text-gray-900">On Chain</span>
+            <span className="text-2xl font-bold text-gray-900"></span>
           </Link>
 
           {/* Desktop Navigation */}

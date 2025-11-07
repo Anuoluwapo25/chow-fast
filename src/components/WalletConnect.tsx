@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 export default function WalletConnect() {
   // Placeholder - wallet integration will be added with smart contracts
   const handleConnect = () => {
-    alert('Wallet connection will be implemented with Stellar integration');
+    alert('Wallet connection will be implemented with Arbitrum integration');
   };
 
   return (

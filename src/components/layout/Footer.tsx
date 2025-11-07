@@ -138,7 +138,7 @@ export default function Footer() {
 
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Chow Fast On Chain. All rights reserved.
+              &copy; {currentYear} Chow Fast. All rights reserved.
             </p>
           </div>
         </div>
