@@ -1,155 +1,256 @@
-# Fast Snacks On Chain
+# Chow Fast - Food Ordering on Arbitrum with Stylus
 
-A blockchain-powered snack ordering platform built on the Stellar network. Fast Snacks On Chain brings the convenience of online food ordering to Web3, offering curated snack packages with transparent pricing and secure cryptocurrency payments.
+Chow Fast is a decentralized food ordering platform built on Arbitrum blockchain, powered by **Stylus smart contracts**. This project is a migration from fast-snack (Solidity) to use Arbitrum Stylus (Rust) for improved gas efficiency and performance.
 
-## Overview
+## 🚀 Key Features
 
-Fast Snacks On Chain is a modern e-commerce platform that bridges traditional food delivery with blockchain technology. Users can browse and purchase curated snack packages across three categories (Budget, Middle, Bulk), pay with Stellar (XLM), and enjoy a seamless ordering experience.
+- **Arbitrum Stylus Smart Contracts**: Written in Rust, compiled to WASM for 50-90% gas savings
+- **Web3 Wallet Integration**: Connect with MetaMask, Coinbase Wallet, Rainbow, and more
+- **Real-time Order Tracking**: All orders stored on-chain
+- **React + TypeScript Frontend**: Modern, responsive UI
+- **Decentralized Payments**: Pay with ETH on Arbitrum
+- **Checkout Flow**: Complete order processing with delivery information
 
-## Features
-
-- **Curated Snack Packages**: 9 carefully selected packages across 3 categories
-  - Budget Packages (100-300 XLM)
-  - Middle Packages (400-800 XLM)
-  - Bulk Packages (5000-15000 XLM)
-
-- **Shopping Cart**: Full-featured cart with quantity controls and real-time price updates
-
-- **Category Filtering**: Browse products by category with intuitive navigation
-
-- **Responsive Design**: Mobile-first design that works seamlessly on all devices
-
-- **Modern UI**: Built with FastBuka design system (primary green #0faf62, secondary orange #ed1d24)
-
-- **Type-Safe**: Full TypeScript implementation for better developer experience
-
-## Tech Stack
-
-- **React 19** - Modern UI library
-- **TypeScript** - Type-safe development
-- **Vite** - Fast build tool and dev server
-- **Tailwind CSS v3** - Utility-first CSS framework
-- **Zustand** - Lightweight state management
-- **React Router v7** - Client-side routing
-- **Radix UI** - Accessible component primitives
-- **Lucide React** - Beautiful icon library
-
-## Prerequisites
-
-- Node.js 18+
-- npm or yarn package manager
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd fast-snacks-on-chain
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:5173`
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-fast-snacks-on-chain/
+chow-fast/
+├── contracts/
+│   └── stylus/           # Arbitrum Stylus (Rust) contracts
+│       ├── src/
+│       │   └── lib.rs    # Main contract logic
+│       ├── scripts/
+│       │   ├── deploy.sh       # Deployment script
+│       │   └── export-abi.sh   # ABI export script
+│       ├── Cargo.toml    # Rust dependencies
+│       └── README.md     # Stylus contract documentation
 ├── src/
-│   ├── components/
-│   │   ├── layout/          # Header, Footer
-│   │   ├── ui/              # Reusable UI components (Button, Card, etc.)
-│   │   ├── Cart.tsx         # Shopping cart sidebar
-│   │   ├── Checkout.tsx     # Checkout component
-│   │   ├── ProductCard.tsx  # Product display card
-│   │   └── WalletConnect.tsx # Wallet connection (placeholder)
-│   ├── constants/
-│   │   └── products.ts      # Product catalog data
-│   ├── hooks/
-│   │   └── useCart.ts       # Zustand cart store
-│   ├── lib/
-│   │   └── utils.ts         # Utility functions
-│   ├── pages/
-│   │   ├── Home.tsx         # Landing page
-│   │   ├── Category.tsx     # Category filtering page
-│   │   ├── CartPage.tsx     # Full cart view
-│   │   └── OrderConfirm.tsx # Order confirmation
-│   ├── styles/
-│   │   └── globals.css      # Global styles & Tailwind directives
-│   ├── types/
-│   │   └── index.ts         # TypeScript interfaces
-│   ├── App.tsx              # Main app component with routing
-│   └── main.tsx             # Application entry point
-├── tailwind.config.ts       # Tailwind configuration
-├── tsconfig.json            # TypeScript configuration
-└── vite.config.ts           # Vite configuration
+│   ├── components/       # React components
+│   ├── config/          # Contract & Web3 configuration
+│   ├── contracts/       # Contract ABIs
+│   ├── hooks/           # React hooks including contract hooks
+│   ├── pages/           # Page components
+│   ├── styles/          # CSS styles
+│   ├── types/           # TypeScript type definitions
+│   └── utils/           # Utility functions
+├── package.json         # Frontend dependencies and scripts
+└── README.md           # This file
 ```
 
-## Design System
+## 🛠️ Prerequisites
 
-The project follows the FastBuka design system:
+### For Frontend Development
 
-- **Primary Color**: Green (#0faf62) - Used for CTAs, primary actions
-- **Secondary Color**: Orange (#ed1d24) - Used for accents, highlights
-- **Accent Color**: Light Green (#f0fdf4) - Used for backgrounds
-- **Typography**: Inter font family
-- **Border Radius**: Rounded-full for buttons (following FastBuka style)
+- Node.js >= 18.x
+- npm or yarn
+- Git
 
-## Component Architecture
+### For Contract Development
 
-The project uses a **reusable component architecture** to maintain clean, maintainable code:
+- Rust (latest stable)
+- cargo-stylus tool
+- wasm32-unknown-unknown target
 
-- **UI Components**: Base components (Button, Card, Input) with variants
-- **Layout Components**: Consistent header and footer across pages
-- **Feature Components**: Product cards, cart, checkout with isolated logic
-- **Pages**: Composed from reusable components
+## 📦 Installation
 
-## Future Features
+### 1. Frontend Setup
 
-- **Stellar Wallet Integration**: Connect with Freighter, Albedo, and other Stellar wallets
-- **Smart Contract Integration**: On-chain order processing and payment verification
-- **Order Tracking**: Real-time order status updates
-- **User Profiles**: Save addresses and order history
-- **Payment Processing**: Complete Stellar payment flow
-- **Delivery Integration**: Real-time delivery tracking
+```bash
+# Navigate to project root
+cd chow-fast
 
-## Development Notes
+# Install dependencies
+npm install
 
-- All icons use **lucide-react** (no emoji icons)
-- Components follow **TypeScript strict mode**
-- Styling uses **Tailwind utility classes**
-- State management via **Zustand** for simplicity
-- Built with **reusability** and **maintainability** in mind
+# Copy environment variables
+cp .env.example .env
 
-## Contributing
+# Edit .env and add your Reown (WalletConnect) Project ID
+# Get one at: https://cloud.reown.com
+```
 
-Contributions are welcome! Please follow these guidelines:
+### 2. Contract Setup
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+```bash
+# Install Rust (if not already installed)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-## License
+# Install Stylus CLI tools
+cargo install --force cargo-stylus cargo-stylus-check
 
-This project is part of a hackathon submission for Stellar blockchain integration.
+# Add WASM target
+rustup target add wasm32-unknown-unknown
+
+# Verify installation
+cargo stylus --version
+```
+
+## 🔧 Development
+
+### Running the Frontend
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+Visit `http://localhost:5173` to see the app.
+
+### Working with Stylus Contracts
+
+```bash
+# Build the contract
+npm run contract:build
+
+# Check contract is valid for Stylus
+npm run contract:check
+
+# Export ABI for frontend
+npm run contract:export-abi
+```
+
+## 🚢 Deployment
+
+### 1. Deploy Stylus Contract
+
+```bash
+# Set your private key (NEVER commit this!)
+export PRIVATE_KEY=your_private_key_here
+
+# Deploy to Arbitrum Sepolia testnet
+npm run contract:deploy:sepolia
+
+# Or deploy to Arbitrum mainnet
+npm run contract:deploy:mainnet
+```
+
+After deployment, you'll receive a contract address. Update it in `src/config/contracts.ts`:
+
+```typescript
+export const CHOW_FAST_CONTRACT = {
+  address: 'YOUR_DEPLOYED_CONTRACT_ADDRESS',
+  abi: ChowFastOrderABI.abi,
+} as const;
+```
+
+### 2. Initialize Contract
+
+After deployment, you need to call the `init()` function on your contract to set the owner. You can do this using:
+
+- Arbiscan (verify and interact)
+- cast (Foundry tool)
+- ethers.js script
+
+### 3. Deploy Frontend
+
+```bash
+# Build the frontend
+npm run build
+
+# Deploy to your hosting provider
+# The dist/ folder contains the production build
+```
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+# Reown Project ID (required for wallet connection)
+VITE_REOWN_PROJECT_ID=your_project_id
+
+# Contract address (update after deployment)
+VITE_CONTRACT_ADDRESS=0x...
+```
+
+## 📝 Smart Contract Functions
+
+### User Functions
+
+- `create_order()` - Create and pay for a new food order
+- `get_order()` - Get order details by ID
+- `get_user_orders()` - Get all orders for current user
+- `cancel_order()` - Cancel order within 5 minutes (with refund)
+- `get_transaction_fee()` - Get current transaction fee
+
+### Owner Functions
+
+- `init()` - Initialize contract (sets owner)
+- `update_order_status()` - Update order status
+- `withdraw()` - Withdraw contract balance
+- `transfer_ownership()` - Transfer contract ownership
+
+## 🧪 Testing
+
+```bash
+# Run frontend linting
+npm run lint
+
+# Test contract build
+cd contracts/stylus
+cargo test
+```
+
+## 📚 Migration Notes
+
+This project was migrated from **fast-snack** (Solidity) to **chow-fast** (Stylus):
+
+### Key Changes
+
+1. **Smart Contracts**: Migrated from Solidity to Rust/Stylus
+2. **Gas Efficiency**: Stylus provides 50-90% gas savings
+3. **Contract Interface**: Adapted to work with Stylus SDK patterns
+4. **Frontend Hooks**: Updated to work with Stylus contract signatures
+
+### Benefits of Stylus
+
+- **Lower Gas Costs**: Significantly cheaper transactions
+- **Better Performance**: WASM execution is faster than EVM
+- **Memory Safety**: Rust's safety guarantees
+- **Full EVM Compatibility**: Works with existing Ethereum tools
+
+## 🔗 Useful Links
+
+- [Arbitrum Stylus Documentation](https://docs.arbitrum.io/stylus/stylus-gentle-introduction)
+- [Stylus SDK Rust Docs](https://docs.rs/stylus-sdk/latest/stylus_sdk/)
+- [cargo-stylus GitHub](https://github.com/OffchainLabs/cargo-stylus)
+- [Arbitrum Sepolia Faucet](https://faucet.quicknode.com/arbitrum/sepolia)
+- [Reown Cloud](https://cloud.reown.com) (for WalletConnect Project ID)
+
+## 🐛 Troubleshooting
+
+### Contract Won't Build
+
+- Ensure you have the latest Rust stable version
+- Run `cargo clean` and rebuild
+- Check Stylus SDK version compatibility
+
+### Frontend Won't Connect to Wallet
+
+- Verify VITE_REOWN_PROJECT_ID is set in .env
+- Check that you're on Arbitrum Sepolia network (chain ID: 421614)
+- Clear browser cache and reload
+
+### Transactions Failing
+
+- Ensure contract is initialized (init() was called)
+- Check you have enough ETH for gas + transaction fee
+- Verify contract address is correct in config/contracts.ts
+
+## 📄 License
+
+MIT
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-Built with ❤️ for the Stellar ecosystem
+**Note**: This is a hackathon/educational project. The smart contracts have not been audited. Use at your own risk in production.
