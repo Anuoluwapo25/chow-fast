@@ -6,6 +6,7 @@ export interface Product {
   category: 'budget' | 'middle' | 'bulk';
   items: string[]; // List of items in package
   image: string; // Image URL or path
+
 }
 
 export interface CartItem {

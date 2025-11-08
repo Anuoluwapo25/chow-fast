@@ -3,6 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Button } from './ui/button';
 import type { Product } from '../types';
 import { useCart } from '../hooks/useCart';
+import heroImage2 from '../assets/images/order2.jpeg';
+import productImage1 from '../assets/images/gala.jpeg';
+import productImage2 from '../assets/images/smallchops.jpeg';
+import productImage3 from '../assets/images/drink2.jpeg';
+import productImage4 from '../assets/images/drink.jpeg';
+
+
 
 interface ProductCardProps {
   product: Product;
@@ -19,7 +26,11 @@ export default function ProductCard({ product }: ProductCardProps) {
     <Card className="overflow-hidden hover:scale-105 transition-transform duration-300">
       {/* Product Image */}
       <div className="aspect-square bg-accent flex items-center justify-center">
-        <Package className="h-20 w-20 text-primary animate-pulse" />
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+        />
       </div>
 
       <CardHeader>

@@ -1,5 +1,13 @@
 import type { Product } from '../types';
 
+import productImage1 from '../assets/images/gala.jpeg';
+import productImage2 from '../assets/images/smallchops.jpeg';
+import productImage3 from '../assets/images/drink2.jpeg';
+import productImage4 from '../assets/images/drink.jpeg';
+import productImage5 from '../assets/images/smallchops2.jpeg';
+import productImage6 from '../assets/images/smallchops3.jpeg';
+import productImage7 from '../assets/images/smallchops4.jpeg';
+
 export const PRODUCTS: Product[] = [
   // Budget-Friendly Packages (Package A, B, C)
   {
@@ -9,7 +17,7 @@ export const PRODUCTS: Product[] = [
     price: 0.000016,
     category: 'budget',
     items: ['Sachet water', 'Packet of biscuits (Shortcake/Digestive)'],
-    image: '/images/packages/budget-a.jpg',
+    image: productImage7,
   },
   {
     id: 'budget-b',
@@ -18,7 +26,7 @@ export const PRODUCTS: Product[] = [
     price: 0.000032,
     category: 'budget',
     items: ['Gala (beef roll)', 'Soft drink (Coke/Pepsi/Fanta)'],
-    image: '/images/packages/budget-b.jpg',
+    image: productImage1,
   },
   {
     id: 'budget-c',
@@ -27,7 +35,7 @@ export const PRODUCTS: Product[] = [
     price: 0.00004,
     category: 'budget',
     items: ['Small loaf of bread', 'Sachet water', 'Small butter spread'],
-    image: '/images/packages/budget-c.jpg',
+    image: productImage3,
   },
 
   // Middle-Class Packages (Package D, E, F)
@@ -38,7 +46,7 @@ export const PRODUCTS: Product[] = [
     price: 0.000064,
     category: 'middle',
     items: ['Vega milk', 'Meat pie', 'Bottled water'],
-    image: '/images/packages/middle-d.jpg',
+    image: productImage3,
   },
   {
     id: 'middle-e',
@@ -47,7 +55,7 @@ export const PRODUCTS: Product[] = [
     price: 0.000096,
     category: 'middle',
     items: ['Nutri milk', 'Sausage roll', 'Juice box'],
-    image: '/images/packages/middle-e.jpg',
+    image: productImage6,
   },
   {
     id: 'middle-f',
@@ -56,7 +64,7 @@ export const PRODUCTS: Product[] = [
     price: 0.00012,
     category: 'middle',
     items: ['Yogurt drink', 'Chicken roll', 'Fresh fruit (banana/apple)'],
-    image: '/images/packages/middle-f.jpg',
+    image: productImage3,
   },
 
   // Bulk/Event Packages (Package G, H, I)
@@ -67,7 +75,7 @@ export const PRODUCTS: Product[] = [
     price: 0.0008,
     category: 'bulk',
     items: ['50 bottles of soft drinks (mixed flavors)'],
-    image: '/images/packages/bulk-g.jpg',
+    image: productImage4,
   },
   {
     id: 'bulk-h',
@@ -76,7 +84,7 @@ export const PRODUCTS: Product[] = [
     price: 0.00128,
     category: 'bulk',
     items: ['100 meat pies', '100 small chops'],
-    image: '/images/packages/bulk-h.jpg',
+    image: productImage2,
   },
   {
     id: 'bulk-i',
@@ -85,7 +93,7 @@ export const PRODUCTS: Product[] = [
     price: 0.0024,
     category: 'bulk',
     items: ['Cake', '200 drinks', '200 assorted snacks'],
-    image: '/images/packages/bulk-i.jpg',
+    image: productImage2,
   },
 ];
 

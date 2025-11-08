@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Package, ShoppingCart, Check, Zap, Shield, DollarSign, CreditCard } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -6,17 +7,33 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 import ProductCard from '../components/ProductCard';
 import { PRODUCTS, CATEGORIES } from '../constants/products';
 
+import heroImage1 from '../assets/images/order.jpeg';
+import heroImage2 from '../assets/images/order2.jpeg';
+import heroImage3 from '../assets/images/delivery.jpeg';
+import OrderImage from '../assets/images/order2.jpeg';
+
+
+
 export default function Home() {
-  // Get featured products (2 from each category)
   const featuredProducts = [
     ...PRODUCTS.filter(p => p.category === 'budget').slice(0, 2),
     ...PRODUCTS.filter(p => p.category === 'middle').slice(0, 2),
     ...PRODUCTS.filter(p => p.category === 'bulk').slice(0, 2),
   ];
 
+  const images = [heroImage1, heroImage2, heroImage3];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
       <section className="min-h-[90vh] flex items-center bg-gradient-to-b from-accent to-white">
         <div className="container mx-auto px-4 md:px-8 lg:px-16 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -39,15 +56,31 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Image */}
             <div className="flex items-center justify-center">
-              <div className="relative">
-                <Package className="h-64 w-64 text-primary animate-pulse" />
+              <div className="relative h-80 w-80">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                      index === currentImageIndex
+                        ? 'opacity-100 translate-y-0 scale-100 z-10'
+                        : index < currentImageIndex
+                        ? 'opacity-0 -translate-y-10 scale-95'
+                        : 'opacity-0 translate-y-10 scale-95'
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt={`Snack Package ${index + 1}`}
+                      className="h-64 w-64 object-cover rounded-2xl shadow-2xl border-4 border-white mx-auto"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </section>
+    </section>
 
       {/* How It Works Section */}
       <section className="py-20 bg-accent">
@@ -284,7 +317,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 bg-primary text-white">
+      {/* <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 md:px-8 lg:px-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Order?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -296,7 +329,36 @@ export default function Home() {
             </Button>
           </Link>
         </div>
+      </section> */}
+
+      <section className="py-20 bg-primary text-white">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image Content - Now on left */}
+            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+              <img 
+                src={OrderImage} 
+                alt="Delicious snacks ready for order" 
+                className="rounded-lg shadow-2xl max-w-full h-auto max-h-80 object-cover"
+              />
+            </div>
+            
+            {/* Text Content - Now on right */}
+            <div className="text-center lg:text-left order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Order?</h2>
+              <p className="text-xl mb-8 max-w-2xl mx-auto lg:mx-0">
+                Start enjoying fast, secure, and delicious snack delivery today
+              </p>
+              <Link to="/category/budget">
+                <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-gray-100">
+                  Browse Packages
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
+
   );
 }

@@ -8,10 +8,9 @@ export const wagmiConfig = getDefaultConfig({
   ssr: false, // Set to true if using server-side rendering
 });
 
-// Contract configuration
 export const CHOW_FAST_CONTRACT = {
   address: '0x0000000000000000000000000000000000000000' as const,
   abi: [], // Import your ABI here
 } as const;
 
-export const TRANSACTION_FEE = '0.00001'; // 0.00001 ETH
+export const TRANSACTION_FEE = '0.00001'; 

@@ -23,5 +23,4 @@ export const ARBITRUM_ONE = {
   rpcUrl: 'https://arb1.arbitrum.io/rpc',
 } as const;
 
-// Transaction fee from contract
 export const TRANSACTION_FEE = '0.00001'; // 0.00001 ETH
