@@ -6,6 +6,7 @@ import { useCart } from '../hooks/useCart';
 import { useChowFastOrder } from '../hooks/contracts/useChowFastOrder';
 import { Input } from './ui/input';
 import { formatEthPrice } from '../utils/formatPrice';
+import { TRANSACTION_FEE } from '../config/contracts';
 
 interface CheckoutProps {
   onConfirm: (txHash: string) => void;
@@ -20,7 +21,7 @@ export default function Checkout({ onConfirm }: CheckoutProps) {
   const [txStatus, setTxStatus] = useState<'idle' | 'pending' | 'success' | 'error'>('idle');
   const [txHash, setTxHash] = useState('');
 
-  const transactionFee = 0.00001;
+  const transactionFee = parseFloat(TRANSACTION_FEE);
   const total = getTotalPrice() + transactionFee;
 
   const handleConfirmPayment = async () => {

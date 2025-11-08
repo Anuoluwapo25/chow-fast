@@ -32,7 +32,7 @@ export default function Cart() {
             {/* Product Info */}
             <div className="flex-1">
               <h3 className="font-semibold">{item.product.name}</h3>
-              <p className="text-sm text-gray-600">{item.product.price} XLM</p>
+              <p className="text-sm text-gray-600">{item.product.price} ETH</p>
             </div>
 
             {/* Quantity Controls */}
@@ -77,7 +77,7 @@ export default function Cart() {
       <div className="border-t pt-4">
         <div className="flex justify-between items-center mb-4">
           <span className="text-lg font-semibold">Total:</span>
-          <span className="text-2xl font-bold text-primary">{getTotalPrice()} XLM</span>
+          <span className="text-2xl font-bold text-primary">{getTotalPrice()} ETH</span>
         </div>
 
         {/* Actions */}

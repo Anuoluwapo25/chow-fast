@@ -44,6 +44,7 @@ import Category from './pages/Category';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirm from './pages/OrderConfirm';
+import OrderDetails from './pages/OrderDetails';
 
 const queryClient = new QueryClient();
 
@@ -62,6 +63,7 @@ function App() {
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/checkout" element={<CheckoutPage />} />
                   <Route path="/order/confirm" element={<OrderConfirm />} />
+                  <Route path="/order/details" element={<OrderDetails />} />
                 </Routes>
               </main>
               <Footer />

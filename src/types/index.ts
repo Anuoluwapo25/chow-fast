@@ -2,7 +2,7 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  price: number; // in XLM
+  price: number; // in ETH
   category: 'budget' | 'middle' | 'bulk';
   items: string[]; // List of items in package
   image: string; // Image URL or path

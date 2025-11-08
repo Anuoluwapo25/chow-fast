@@ -266,7 +266,7 @@ export default function Home() {
               </AccordionItem>
 
               <AccordionItem value="item-4">
-                <AccordionTrigger>Are the prices in XLM or Naira?</AccordionTrigger>
+                <AccordionTrigger>Are the prices in ETH or Naira?</AccordionTrigger>
                 <AccordionContent>
                   All prices are displayed in ETH. The ETH amount is equivalent to the Naira value at current exchange rates.
                 </AccordionContent>
