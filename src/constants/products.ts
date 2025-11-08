@@ -4,7 +4,6 @@ import productImage1 from '../assets/images/gala.jpeg';
 import productImage2 from '../assets/images/smallchops.jpeg';
 import productImage3 from '../assets/images/drink2.jpeg';
 import productImage4 from '../assets/images/drink.jpeg';
-import productImage5 from '../assets/images/smallchops2.jpeg';
 import productImage6 from '../assets/images/smallchops3.jpeg';
 import productImage7 from '../assets/images/smallchops4.jpeg';
 

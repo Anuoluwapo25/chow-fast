@@ -79,9 +79,10 @@ export default function WalletConnect() {
 
               if (chain.unsupported) {
                 return (
-                  <Button 
-                    onClick={openChainModal} 
-                    variant="destructive"
+                  <Button
+                    onClick={openChainModal}
+                    variant="outline"
+                    className="border-red-500 text-red-600 hover:bg-red-50"
                   >
                     Wrong network
                   </Button>

@@ -1,13 +1,7 @@
-import { Package } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import type { Product } from '../types';
 import { useCart } from '../hooks/useCart';
-import heroImage2 from '../assets/images/order2.jpeg';
-import productImage1 from '../assets/images/gala.jpeg';
-import productImage2 from '../assets/images/smallchops.jpeg';
-import productImage3 from '../assets/images/drink2.jpeg';
-import productImage4 from '../assets/images/drink.jpeg';
 
 
 

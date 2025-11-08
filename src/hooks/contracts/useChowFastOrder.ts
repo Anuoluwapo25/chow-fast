@@ -184,11 +184,12 @@ export function useChowFastOrder() {
    * Get all orders for current user
    * NOTE: Simplified Stylus contract doesn't have getUserOrders function
    * Filter OrderCreated events by buyer address instead
+   * Currently not used - kept for future implementation
    */
-  const getUserOrders = useCallback(async () => {
-    console.warn('getUserOrders not available in simplified contract. Filter events instead.');
-    return [];
-  }, []);
+  // const getUserOrders = useCallback(async () => {
+  //   console.warn('getUserOrders not available in simplified contract. Filter events instead.');
+  //   return [];
+  // }, []);
 
   /**
    * Cancel an order (within 5 minutes)
