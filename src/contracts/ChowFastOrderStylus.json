@@ -1,0 +1,115 @@
+{
+  "abi": [
+    {
+      "type": "function",
+      "name": "init",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "createOrder",
+      "inputs": [
+        { "name": "item_product_ids", "type": "string[]" },
+        { "name": "item_product_names", "type": "string[]" },
+        { "name": "item_prices", "type": "uint256[]" },
+        { "name": "item_quantities", "type": "uint256[]" },
+        { "name": "subtotal", "type": "uint256" },
+        { "name": "delivery_info", "type": "string" }
+      ],
+      "outputs": [{ "name": "", "type": "uint256" }],
+      "stateMutability": "payable"
+    },
+    {
+      "type": "function",
+      "name": "updateOrderStatus",
+      "inputs": [
+        { "name": "order_id", "type": "uint256" },
+        { "name": "new_status", "type": "uint8" }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "cancelOrder",
+      "inputs": [{ "name": "order_id", "type": "uint256" }],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "withdraw",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "transferOwnership",
+      "inputs": [{ "name": "new_owner", "type": "address" }],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [{ "name": "", "type": "address" }],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getTotalOrders",
+      "inputs": [],
+      "outputs": [{ "name": "", "type": "uint256" }],
+      "stateMutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "OrderCreated",
+      "inputs": [
+        { "name": "order_id", "type": "uint256", "indexed": true },
+        { "name": "buyer", "type": "address", "indexed": true },
+        { "name": "total", "type": "uint256", "indexed": false },
+        { "name": "timestamp", "type": "uint256", "indexed": false },
+        { "name": "delivery_info", "type": "string", "indexed": false },
+        { "name": "product_ids", "type": "string[]", "indexed": false },
+        { "name": "product_names", "type": "string[]", "indexed": false },
+        { "name": "prices", "type": "uint256[]", "indexed": false },
+        { "name": "quantities", "type": "uint256[]", "indexed": false }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "OrderStatusUpdated",
+      "inputs": [
+        { "name": "order_id", "type": "uint256", "indexed": true },
+        { "name": "new_status", "type": "uint8", "indexed": false },
+        { "name": "timestamp", "type": "uint256", "indexed": false }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "PaymentReceived",
+      "inputs": [
+        { "name": "order_id", "type": "uint256", "indexed": true },
+        { "name": "buyer", "type": "address", "indexed": true },
+        { "name": "amount", "type": "uint256", "indexed": false }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "FundsWithdrawn",
+      "inputs": [
+        { "name": "owner", "type": "address", "indexed": true },
+        { "name": "amount", "type": "uint256", "indexed": false }
+      ],
+      "anonymous": false
+    }
+  ]
+}

@@ -1,9 +1,9 @@
-import ChowFastOrderABI from '../contracts/ChowFastOrder.json';
+import ChowFastOrderStylusABI from '../contracts/ChowFastOrderStylus.json';
 
-// Contract deployed on Arbitrum Sepolia (update this after deployment)
+// Contract deployed on Arbitrum Sepolia Testnet
 export const CHOW_FAST_CONTRACT = {
-  address: '0x0000000000000000000000000000000000000000' as const, // Update after deploying Stylus contract
-  abi: ChowFastOrderABI.abi,
+  address: '0x7d9f801f94edf810b9156ce3033af75b6c01cee2' as const, // Stylus contract deployed!
+  abi: ChowFastOrderStylusABI.abi,
 } as const;
 
 // Network configurations
