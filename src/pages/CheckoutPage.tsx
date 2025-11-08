@@ -4,9 +4,22 @@ import Checkout from '../components/Checkout';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
-  const { clearCart } = useCart();
+  const { items, getTotalPrice, clearCart } = useCart();
 
   const handleOrderConfirm = (txHash: string) => {
+    // Store order data before clearing cart
+    const orderData = {
+      items: items.map(item => ({
+        id: item.product.id,
+        name: item.product.name,
+        price: item.product.price,
+        quantity: item.quantity,
+      })),
+      total: getTotalPrice(),
+      timestamp: Date.now(),
+    };
+    localStorage.setItem('lastOrder', JSON.stringify(orderData));
+
     // Clear the cart after successful order
     clearCart();
 

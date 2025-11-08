@@ -87,7 +87,7 @@ export function useChowFastOrder() {
       const contract = await getContract();
 
       // Send transaction with separate arrays (Stylus contract signature)
-      const tx = await contract.create_order(
+      const tx = await contract.createOrder(
         productIds,
         productNames,
         prices,
@@ -121,48 +121,74 @@ export function useChowFastOrder() {
   }, [isConnected, address, getContract]);
 
   /**
-   * Get order details by ID
+   * Get order details by transaction hash
+   * Fetches the OrderCreated event from the transaction receipt
    */
-  const getOrder = useCallback(async (orderId: number) => {
+  const getOrderByTxHash = useCallback(async (txHash: string) => {
     try {
       const contract = await getReadOnlyContract();
-      const order = await contract.get_order(orderId);
+      const provider = contract.runner?.provider;
 
-      // Stylus contract returns tuple: (buyer, subtotal, transactionFee, total, timestamp, status, deliveryInfo, itemCount)
+      if (!provider) {
+        throw new Error('Provider not available');
+      }
+
+      // Get transaction receipt
+      const receipt = await provider.getTransactionReceipt(txHash);
+
+      if (!receipt) {
+        throw new Error('Transaction not found');
+      }
+
+      // Parse logs to find OrderCreated event
+      const orderCreatedEvent = receipt.logs
+        .map(log => {
+          try {
+            return contract.interface.parseLog({
+              topics: [...log.topics],
+              data: log.data
+            });
+          } catch {
+            return null;
+          }
+        })
+        .find(event => event?.name === 'OrderCreated');
+
+      if (!orderCreatedEvent) {
+        throw new Error('OrderCreated event not found in transaction');
+      }
+
+      // Extract order data from event
+      const args = orderCreatedEvent.args;
+
       return {
-        orderId: orderId.toString(),
-        buyer: order[0],
-        subtotal: order[1].toString(),
-        transactionFee: order[2].toString(),
-        total: order[3].toString(),
-        timestamp: Number(order[4]),
-        status: Number(order[5]),
-        deliveryInfo: order[6],
-        itemCount: Number(order[7]),
+        orderId: args.order_id.toString(),
+        buyer: args.buyer,
+        total: args.total.toString(),
+        timestamp: Number(args.timestamp),
+        deliveryInfo: args.delivery_info,
+        items: args.product_ids.map((id: string, index: number) => ({
+          productId: id,
+          productName: args.product_names[index],
+          price: args.prices[index].toString(),
+          quantity: Number(args.quantities[index]),
+        })),
       };
     } catch (err: any) {
-      console.error('Error getting order:', err);
-      throw new Error(err.message || 'Failed to get order');
+      console.error('Error fetching order:', err);
+      throw new Error(err.message || 'Failed to fetch order details');
     }
   }, [getReadOnlyContract]);
 
   /**
    * Get all orders for current user
+   * NOTE: Simplified Stylus contract doesn't have getUserOrders function
+   * Filter OrderCreated events by buyer address instead
    */
   const getUserOrders = useCallback(async () => {
-    if (!isConnected || !address) {
-      return [];
-    }
-
-    try {
-      const contract = await getReadOnlyContract();
-      const orderIds = await contract.get_user_orders(address);
-      return orderIds.map((id: bigint) => Number(id));
-    } catch (err: any) {
-      console.error('Error getting user orders:', err);
-      throw new Error(err.message || 'Failed to get user orders');
-    }
-  }, [isConnected, address, getReadOnlyContract]);
+    console.warn('getUserOrders not available in simplified contract. Filter events instead.');
+    return [];
+  }, []);
 
   /**
    * Cancel an order (within 5 minutes)
@@ -177,7 +203,7 @@ export function useChowFastOrder() {
 
     try {
       const contract = await getContract();
-      const tx = await contract.cancel_order(orderId);
+      const tx = await contract.cancelOrder(orderId);
 
       console.log('Cancel transaction sent:', tx.hash);
       const receipt = await tx.wait();
@@ -200,17 +226,12 @@ export function useChowFastOrder() {
 
   /**
    * Get contract transaction fee
+   * NOTE: Simplified contract doesn't have getTransactionFee function
+   * Returns hardcoded value from config
    */
   const getTransactionFee = useCallback(async () => {
-    try {
-      const contract = await getReadOnlyContract();
-      const fee = await contract.get_transaction_fee();
-      return fee.toString();
-    } catch (err: any) {
-      console.error('Error getting transaction fee:', err);
-      return parseEther(TRANSACTION_FEE).toString();
-    }
-  }, [getReadOnlyContract]);
+    return parseEther(TRANSACTION_FEE).toString();
+  }, []);
 
   return {
     // State
@@ -221,8 +242,7 @@ export function useChowFastOrder() {
 
     // Functions
     createOrder,
-    getOrder,
-    getUserOrders,
+    getOrderByTxHash,
     cancelOrder,
     getTransactionFee,
   };

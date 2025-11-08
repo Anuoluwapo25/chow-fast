@@ -3,17 +3,18 @@ import { ShoppingCart, Minus, Plus, X } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { useCart } from '../hooks/useCart';
+import { TRANSACTION_FEE } from '../config/contracts';
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem, getTotalPrice } = useCart();
   const navigate = useNavigate();
 
-  const transactionFee = 0.00001; // Placeholder fee
+  const transactionFee = parseFloat(TRANSACTION_FEE);
   const total = getTotalPrice() + transactionFee;
 
   const handleCheckout = () => {
     if (items.length > 0) {
-      navigate('/order/confirm');
+      navigate('/checkout');
     }
   };
 
@@ -55,7 +56,7 @@ export default function CartPage() {
                     <h3 className="font-bold text-lg">{item.product.name}</h3>
                     <p className="text-sm text-gray-600">{item.product.description}</p>
                     <p className="text-lg font-semibold text-primary mt-1">
-                      {item.product.price} XLM
+                      {item.product.price} ETH
                     </p>
                   </div>
 
@@ -83,7 +84,7 @@ export default function CartPage() {
                     <p className="font-bold text-xl text-primary">
                       {(item.product.price * item.quantity).toFixed(2)}
                     </p>
-                    <p className="text-sm text-gray-600">XLM</p>
+                    <p className="text-sm text-gray-600">ETH</p>
                   </div>
 
                   {/* Remove Button */}

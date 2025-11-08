@@ -2,6 +2,24 @@
 
 Chow Fast is a decentralized food ordering platform built on Arbitrum blockchain, powered by **Stylus smart contracts**. This project is a migration from fast-snack (Solidity) to use Arbitrum Stylus (Rust) for improved gas efficiency and performance.
 
+## 🎉 Deployed Contract
+
+The Chow Fast ordering system is **live on Arbitrum Sepolia testnet**!
+
+- **Contract Address**: [`0x7d9f801f94edf810b9156ce3033af75b6c01cee2`](https://sepolia.arbiscan.io/address/0x7d9f801f94edf810b9156ce3033af75b6c01cee2)
+- **Network**: Arbitrum Sepolia Testnet
+- **Chain ID**: 421614
+- **Contract Type**: Arbitrum Stylus (Rust/WASM)
+- **Size**: 22.1 KiB (optimized, under 24 KB limit)
+- **Deployment TX**: [`0x65d1f7c73ddb0d9b22d2a111291c05e17eef7188676a55791b35d315d92a9673`](https://sepolia.arbiscan.io/tx/0x65d1f7c73ddb0d9b22d2a111291c05e17eef7188676a55791b35d315d92a9673)
+- **Activation TX**: [`0x53993114e30d04747c0f7e727b057f5a1cfca23cfd9ed623b8f516238c1241df`](https://sepolia.arbiscan.io/tx/0x53993114e30d04747c0f7e727b057f5a1cfca23cfd9ed623b8f516238c1241df)
+
+### Interact with the Contract
+
+- **View on Arbiscan**: [https://sepolia.arbiscan.io/address/0x7d9f801f94edf810b9156ce3033af75b6c01cee2](https://sepolia.arbiscan.io/address/0x7d9f801f94edf810b9156ce3033af75b6c01cee2)
+- **Live App**: [Your deployed frontend URL here]
+- **Contract Source**: `contracts/stylus/src/lib.rs`
+
 ## 🚀 Key Features
 
 - **Arbitrum Stylus Smart Contracts**: Written in Rust, compiled to WASM for 50-90% gas savings
@@ -134,10 +152,12 @@ After deployment, you'll receive a contract address. Update it in `src/config/co
 
 ```typescript
 export const CHOW_FAST_CONTRACT = {
-  address: 'YOUR_DEPLOYED_CONTRACT_ADDRESS',
-  abi: ChowFastOrderABI.abi,
+  address: '0x7d9f801f94edf810b9156ce3033af75b6c01cee2', // Already deployed!
+  abi: ChowFastOrderStylusABI.abi,
 } as const;
 ```
+
+**Note**: The contract is already deployed at the address above. You can use this deployment or deploy your own instance.
 
 ### 2. Initialize Contract
 
@@ -171,20 +191,33 @@ VITE_CONTRACT_ADDRESS=0x...
 
 ## 📝 Smart Contract Functions
 
+The deployed contract exposes the following functions (exported as camelCase):
+
 ### User Functions
 
-- `create_order()` - Create and pay for a new food order
-- `get_order()` - Get order details by ID
-- `get_user_orders()` - Get all orders for current user
-- `cancel_order()` - Cancel order within 5 minutes (with refund)
-- `get_transaction_fee()` - Get current transaction fee
+- `createOrder()` - Create and pay for a new food order (payable)
+  - Accepts: product IDs, names, prices, quantities, subtotal, delivery info
+  - Emits: `OrderCreated` event with full order details
+  - Payment required: subtotal + 0.00001 ETH transaction fee
+- `cancelOrder(orderId)` - Cancel order within 5 minutes (with refund)
+- `getTotalOrders()` - Get total number of orders created
 
 ### Owner Functions
 
-- `init()` - Initialize contract (sets owner)
-- `update_order_status()` - Update order status
+- `init()` - Initialize contract (sets owner) - **Already initialized**
+- `updateOrderStatus(orderId, newStatus)` - Update order status
 - `withdraw()` - Withdraw contract balance
-- `transfer_ownership()` - Transfer contract ownership
+- `transferOwnership(newOwner)` - Transfer contract ownership
+- `owner()` - View current contract owner
+
+### Events
+
+- `OrderCreated` - Emitted when an order is created (contains all order data)
+- `OrderStatusUpdated` - Emitted when order status changes
+- `PaymentReceived` - Emitted when payment is received
+- `FundsWithdrawn` - Emitted when owner withdraws funds
+
+**Note**: The simplified Stylus contract uses events for data retrieval instead of storage mappings to stay under the 24 KB size limit while maintaining full functionality.
 
 ## 🧪 Testing
 
@@ -216,6 +249,14 @@ This project was migrated from **fast-snack** (Solidity) to **chow-fast** (Stylu
 - **Full EVM Compatibility**: Works with existing Ethereum tools
 
 ## 🔗 Useful Links
+
+### Deployed Contract
+
+- [Contract on Arbiscan](https://sepolia.arbiscan.io/address/0x7d9f801f94edf810b9156ce3033af75b6c01cee2)
+- [Deployment Transaction](https://sepolia.arbiscan.io/tx/0x65d1f7c73ddb0d9b22d2a111291c05e17eef7188676a55791b35d315d92a9673)
+- [Contract Activation TX](https://sepolia.arbiscan.io/tx/0x53993114e30d04747c0f7e727b057f5a1cfca23cfd9ed623b8f516238c1241df)
+
+### Development Resources
 
 - [Arbitrum Stylus Documentation](https://docs.arbitrum.io/stylus/stylus-gentle-introduction)
 - [Stylus SDK Rust Docs](https://docs.rs/stylus-sdk/latest/stylus_sdk/)
