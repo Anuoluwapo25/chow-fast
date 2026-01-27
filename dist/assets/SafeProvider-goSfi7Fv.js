@@ -1,0 +1,1 @@
+import{d as r}from"./index-OxzSXe1i.js";import"./index-BbV5u_gS.js";import"./index-H-Ckw-g_.js";class i extends r.SafeAppProvider{request(e){return e.method==="eth_requestAccounts"?this.request({method:"eth_accounts",params:[]}):super.request(e)}}export{i as SafeProvider};

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Package, ShoppingCart, Check, Zap, Shield, DollarSign, CreditCard, TrendingUp, Users, Clock, Star, ArrowRight, Sparkles } from 'lucide-react';
+import { Package, ShoppingCart, Check, Zap, Shield, DollarSign, CreditCard, Users, Star, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
